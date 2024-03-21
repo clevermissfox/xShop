@@ -897,7 +897,7 @@ function timestamp() {
 }
 
 function virtualAssistant(inputValue) {
-  const apiKey = OPENAI_API;
+  const apiKey = GET /api/v1/accounts/edicodes/env/OPENAI_API;
 
   const url = "https://api.openai.com/v1/completions";
 
