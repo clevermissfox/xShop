@@ -1,0 +1,2215 @@
+/* SETUP and RESET */
+
+/* [btn-close] all svgs or fontawesome */
+/* [btn-close] dialog refactor styles and functionality */
+
+:root {
+  font-size: 62.5%;
+
+  --fs-h1-clamp: clamp(2.4rem, 1.0184rem + 2.683vw, 3.4331rem);
+  --fs-h2-clamp: clamp(1.5rem, 0.7607rem + 1.75vw, 2rem);
+  --fs-h3-clamp: clamp(1.25rem, 0.8818rem + 2.0723vw, 1.5rem);
+  --fs-body-clamp: clamp(1rem, 0.6548rem + 1.2259vw, 1.2581rem);
+  --fs-small-clamp: clamp(0.625rem, 0.4821rem + 0.7143vw, 1.125rem);
+
+  --ff-primary: "Open Sans";
+  --ff-secondary: "Font Awesome 6 Pro";
+
+  --fs-h1: var(--fs-h1-clamp);
+  --fs-h2: var(--fs-h2-clamp);
+  --fs-h3: var(--fs-h3-clamp);
+  --fs-body: var(--fs-body-clamp);
+  --fs-small: var(--fs-small-clamp);
+
+  --clr-primary: #e3dcf7;
+  --clr-accent: linear-gradient(#8b64f5, #a186ed, #5c3db1);
+  --clr-neutral-100: #fff;
+  --clr-neutral-900: #000;
+
+  --clr-bg-body: rgba(0, 0, 0, 0.8);
+  --clr-bg-grade-blue: linear-gradient(to right, #70b7f1, #56a5e6, #0c6cba);
+  --clr-bg-grade-purp: linear-gradient(to right, #8b64f5, #a186ed, #5c3db1);
+
+  --min-width: 30rem;
+  --width-min: min(100%, var(--min-width));
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+li {
+  list-style: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+button {
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  height: 4px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--clr-accent);
+}
+
+::-moz-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--clr-accent);
+}
+
+::placeholder {
+  color: inherit;
+  opacity: 0.7;
+}
+
+::selection {
+  background: #8b64f5;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* CLIP PROPERTIES  */
+/* background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent; */
+
+/* **********UTILITY CLASSES********** */
+
+.asp-rat-1 {
+  aspect-ratio: 1;
+}
+
+.transition-250 {
+  transition: all 250ms ease-in-out;
+}
+
+.transition-300 {
+  transition: all 300ms ease-in-out;
+}
+
+/* GRID AND FLEX UTILITY CLASSES */
+.row {
+  display: flex;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+}
+
+.pc-cen {
+  place-content: center;
+}
+
+.pi-cen {
+  place-items: center;
+}
+
+.ac-st {
+  align-content: start;
+}
+
+.ac-cen {
+  align-content: center;
+}
+
+.ac-end {
+  align-content: end;
+}
+
+.ac-sb {
+  align-content: space-between;
+}
+
+.ac-sa {
+  align-content: space-around;
+}
+
+.ai-st {
+  align-items: start;
+}
+
+.ai-cen {
+  align-items: center;
+}
+
+.ai-end {
+  align-items: end;
+}
+
+.jc-st {
+  justify-content: start;
+}
+
+.jc-cen {
+  justify-content: center;
+}
+
+.jc-end {
+  justify-content: end;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.jc-sa {
+  justify-content: space-around;
+}
+
+.jc-se {
+  justify-content: space-evenly;
+}
+
+.ji-cen {
+  justify-items: center;
+}
+
+.as-st {
+  align-self: start;
+}
+
+.as-cen {
+  align-self: center;
+}
+
+.as-end {
+  align-self: end;
+}
+
+.js-st {
+  justify-self: start;
+}
+
+.js-cen {
+  justify-self: center;
+}
+
+.js-end {
+  justify-self: end;
+}
+
+.fg-1 {
+  flex-grow: 1;
+}
+
+.fs-0 {
+  flex-shrink: 0;
+}
+
+.fw-wrap {
+  flex-wrap: wrap;
+}
+
+.fb-100 {
+  flex-basis: 100%;
+}
+
+.gap-2 {
+  gap: 2em;
+}
+
+.gap-1 {
+  gap: 1em;
+}
+
+.gap-half {
+  gap: 0.5em;
+}
+
+.gap-quarter {
+  gap: 0.25em;
+}
+
+/* ELEMENT SELECTORS */
+body {
+  margin: 0;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--clr-primary);
+  display: grid;
+  background-color: var(--clr-bg-body);
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  text-wrap: balance;
+  line-height: 1;
+  font-weight: 600;
+  font-family: "Josefin Sans";
+  background-image: var(--clr-bg-grade-blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: cover;
+  animation: move 2s infinite alternate;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: 1;
+  font-weight: 600;
+  font-family: "Josefin Sans";
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: 1;
+  font-weight: 600;
+  font-family: "Josefin Sans";
+}
+
+/* LAYOUT */
+
+.card {
+  padding: 3em 1em;
+  width: 100%;
+  min-height: 100vh;
+  transition: 300ms ease-in-out;
+
+  grid-template-columns: repeat(auto-fit, minmax(20%, 30rem));
+  grid-auto-rows: min-content;
+  grid-row-gap: 1em;
+}
+
+.card.cardRowView {
+  grid-template-columns: initial;
+}
+
+/* PROJECT SPECIFIC STYLES */
+
+.header {
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-900);
+  align-self: start;
+}
+
+/* nav bar sans top info bar */
+.nav {
+  padding: 1.25em 2em;
+}
+
+/* top bar  */
+.info-bar {
+  background-image: var(--clr-bg-grade-purp);
+  text-align: center;
+  color: white;
+  padding: 0 2em;
+}
+
+.info-bar [btn-close] {
+  padding: 1em;
+  fill: var(--clr-neutral-100);
+}
+
+/* SEARCH BAR */
+input[type="text"] {
+  border: none;
+}
+
+.search-bar {
+  --size: 3.5rem;
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 100vw;
+  padding: 0.5rem;
+  transition: 500ms cubic-bezier(0.1, 0.98, 0.49, 1.1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.search-bar-button {
+  background: transparent;
+  width: calc(var(--size) - 1rem);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  margin-left: auto;
+  cursor: pointer;
+  align-self: center;
+  flex-grow: 0;
+  z-index: 3;
+}
+
+.search-bar-button:is(:focus) {
+  outline: none;
+  background-image: var(--clr-bg-grade-purp);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.search-bar-input {
+  background: transparent;
+  color: inherit;
+  height: calc(var(--size) - 1rem);
+  padding: 0 0.5em;
+  position: absolute;
+  top: calc(0 - 0.5rem);
+  bottom: calc(0 - 0.5rem);
+  left: 0;
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.1, 0.98, 0.49, 1.1);
+}
+
+.search-bar-input:is(:focus) {
+  outline: none;
+}
+
+.search-bar:focus-within {
+  width: 200px;
+  flex-grow: 0;
+  border: 1px solid var(--clr-neutral-900);
+}
+
+.search-bar:focus-within .search-bar-input {
+  opacity: 1;
+  width: calc(100% - 3.5rem);
+  flex-grow: 1;
+}
+
+/* HEADER AND FOOTER links */
+:is(.list-item) {
+  padding-block-end: 0.25em;
+  transition: 300ms;
+  position: relative;
+}
+
+:is(.list-item)::before {
+  content: "";
+  display: block;
+  width: 0;
+  border: 1px solid rgba(0, 0, 0, 0);
+  transition: width 1s;
+  position: absolute;
+  bottom: 0;
+}
+
+:is(.list-item):is(:hover, :focus)::before {
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
+:is(.list-item, .cart-btn):is(:focus, :focus-visible) {
+  outline: none;
+}
+
+.cart-btn {
+  position: relative;
+  font-size: 1.25em;
+}
+
+/* SHOPPING BAG COUNT */
+.cart-quantity {
+  display: block;
+  width: 2em;
+  aspect-ratio: 1;
+  background-color: #0c6cba;
+  color: var(--clr-neutral-100);
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.625em;
+  right: -1.25em;
+  padding: 0.25em;
+  font-size: var(--fs-small);
+}
+
+/* MOBILE MENU */
+.menu-mobile {
+  background: none;
+  display: none;
+}
+
+/* CART CONTAINER */
+.cart {
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-900);
+  width: min(100% - 1em, 30rem);
+  min-height: 85vh;
+  padding: 1em;
+  margin-inline-start: auto;
+  transform: translateX(0);
+  transition: transform 2s ease;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.cart [btn-close] {
+  position: absolute;
+  right: 0;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.cart .spacer {
+  margin-block-start: 1em;
+  margin-inline-start: 0.5em;
+}
+
+.product-cart {
+  grid-template-columns: minmax(6rem, 8rem) auto;
+
+  grid-template-areas:
+    "img title"
+    "img desat"
+    "img counter-wrap";
+  grid-column-gap: 0.5em;
+  margin-block: 1em;
+}
+
+.product-cart img {
+  grid-row: 1 / -1;
+  grid-column: 1;
+  grid-area: img;
+}
+
+.product-cart h2 {
+  grid-row: 1;
+  grid-column: 2;
+  font-size: 1em;
+  grid-area: title;
+  align-self: end;
+}
+
+.product-cart .desat {
+  grid-area: desat;
+}
+
+.counter {
+  border: 1px solid var(--clr-primary);
+  border-radius: 0.25em;
+  aspect-ratio: 1;
+  padding: 0.5em;
+  font-size: 0.625em;
+}
+
+.counter-wrap {
+  grid-column: 2;
+  grid-row: 3;
+  grid-area: counter-wrap;
+  align-self: end;
+}
+
+ul:has(.checkout) {
+  align-self: end;
+}
+
+.checkout {
+  background-image: var(--clr-bg-grade-purp);
+  border-radius: 0.5em;
+  padding: 0.5em 1.5em;
+  display: block;
+  width: 100%;
+  color: white;
+  font-weight: 500;
+  margin-block-start: 2em;
+}
+
+.checkout .fa-arrow-right {
+  margin-inline-start: 0.25em;
+}
+
+/* hero banner */
+
+.hero-banner {
+  background-image: var(--clr-bg-grade-purp), url(Images/snowflakes.png);
+  background-blend-mode: screen;
+  background-size: contain;
+  text-align: center;
+  color: white;
+  padding: 5em 1em;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(139, 100, 245, 0.4);
+  z-index: -1;
+}
+
+.hero-btn {
+  background-color: var(--clr-neutral-100);
+  background-size: 200%;
+  color: black;
+  font-weight: 700;
+  font-size: 1.1em;
+  padding: 0.5em 1.25em;
+  border-radius: 100vw;
+  margin-inline: auto;
+  margin-block-start: 2em;
+  transition: 300ms;
+}
+
+.hero-btn:is(:hover, :focus) {
+  translate: 0 0.5em;
+}
+
+.hero-banner h1 {
+  color: var(--clr-neutral-100);
+}
+
+.hero-banner > p {
+  padding-inline: 0.25em;
+}
+
+/* component pieces (shop christmas collection/shop gift cards) */
+.component-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 40rem), 1fr));
+}
+
+.component {
+  color: var(--clr-neutral-100);
+}
+
+.component .bar {
+  padding: 1em;
+}
+
+.component.shop-collection .bar {
+  background-image: var(--clr-bg-grade-purp);
+}
+
+.component.shop-gift-cards .bar {
+  background-image: var(--clr-bg-grade-blue);
+}
+
+.component .btn-expand,
+.component .btn-nav {
+  background-color: transparent;
+  outline: 2px solid var(--clr-neutral-100);
+  color: var(--clr-neutral-100);
+  transition: 300ms ease-in;
+}
+
+.component .btn-expand {
+  font-size: 1.25em;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0.25em 0.5em;
+}
+
+.component .btn-nav {
+  padding: 0.325em 1em;
+  border-radius: 100vw;
+}
+
+.component .btn-nav:is(:hover, :focus),
+.btn-expand:is(:hover, :focus) {
+  outline: 2px solid var(--clr-neutral-100);
+  background-color: var(--clr-neutral-100);
+  color: #a186ed;
+}
+
+.component-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 15rem 5rem;
+  background-position: center;
+}
+
+.shop-collection .component-image {
+  background-image: url(Images/scandinavian_tree_decor.jpg);
+}
+
+.shop-gift-cards .component-image {
+  background-color: #0b1d4d;
+  background-image: url(Images/snowflakes.png);
+  position: relative;
+}
+
+.shop-gift-cards .component-image::before {
+  content: "Gift Card";
+  color: white;
+  font-family: monospace;
+  background-color: rgb(0, 0, 0, 0.55);
+  position: absolute;
+  inset: 0;
+  padding: 0.5em;
+  font-size: 3em;
+  display: grid;
+  align-items: end;
+}
+
+/* Featured products */
+.feat-products {
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-900);
+  text-align: center;
+  padding: 2em;
+  transition: 300ms ease-in-out;
+}
+
+.feat-products > * {
+  margin-block-end: 2rem;
+}
+.feat-products > p {
+  margin-inline: auto;
+  max-width: 100ch;
+}
+
+.feat-img-row {
+  width: min(100%, 50rem);
+  margin-inline: auto;
+  justify-content: space-evenly;
+}
+
+.feat-img-row > .feat-img-wrap {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.feat-img-row > .feat-img-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0 0 0 / 0.3);
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
+.feat-img-row > .feat-img-wrap:hover::before {
+  opacity: 1;
+}
+
+.feat-img-wrap {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1em;
+}
+
+.feat-img-wrap img {
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+.tag {
+  --_tag-clr: blue;
+  color: white;
+  background-image: var(--_tag-clr);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.25em 0.25em 0.25em 0.5em;
+}
+
+.product {
+  display: none;
+}
+
+.feat-products .product.active {
+  display: grid;
+  grid-template-columns: minmax(30rem) auto;
+  grid-template-areas:
+    " img ."
+    " img title"
+    "img price"
+    "img stars"
+    "img body"
+    "img btn"
+    "img .";
+  grid-gap: 0.5em 1em;
+  text-align: left;
+  max-width: 60vw;
+  margin-inline: auto;
+}
+
+.feat-products .product.active .feat-img-wrap {
+  grid-area: img;
+}
+
+.feat-products .product.active > h2 {
+  grid-area: title;
+}
+
+.feat-products .product.active > .price {
+  grid-area: price;
+}
+
+.feat-products .product.active > .star-row {
+  grid-area: stars;
+}
+
+.feat-products .product.active > .description {
+  text-align: left;
+  grid-area: body;
+}
+
+.feat-products .product.active > .btn {
+  grid-area: btn;
+}
+
+.fa-star {
+  color: #ffcb66;
+}
+
+.feat-products .btn {
+  font-weight: 500;
+  font-size: 1.125em;
+  padding: 0.5em 1.25em;
+  color: var(--clr-neutral-100);
+  background-image: var(--clr-bg-grade-blue);
+  background-blend-mode: multiply;
+  background-size: cover;
+  border-radius: 0.5em;
+  text-align: center;
+  justify-self: start;
+  margin-block-start: 0.5em;
+  transition: 300ms;
+}
+
+.feat-products .btn:is(:hover, :focus) {
+  background-image: var(--clr-bg-grade-purp);
+}
+/* product sections */
+
+.content-wrap {
+  display: flex;
+}
+
+.feat-img-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0 0 0 / 0.3);
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
+.feat-img-wrap:hover::before {
+  opacity: 1;
+}
+
+.feat-img-wrap {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1em;
+}
+
+.feat-img-wrap img {
+  object-fit: cover;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.tag {
+  --_tag-clr: blue;
+  color: white;
+  background-image: var(--_tag-clr);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.25em 0.25em 0.25em 0.5em;
+}
+
+.tag[data-new] {
+  --_tag-clr: var(--clr-bg-grade-blue);
+}
+
+.tag[data-sale] {
+  --_tag-clr: var(--clr-bg-grade-purp);
+}
+
+.tag:hover {
+  scale: 1.2;
+  transform-origin: left;
+}
+
+.cta {
+  background-image: var(--clr-bg-grade-blue);
+  padding: 1em 0;
+  transition: transform 300ms;
+  font-weight: 600;
+  font-size: 1.125em;
+  transform: translateY(4rem);
+  width: 100%;
+}
+
+.feat-img-wrap:hover .cta {
+  transform: translateY(-4rem);
+  cursor: pointer;
+  z-index: 5;
+}
+
+.purple-gradient {
+  background-image: var(--clr-bg-grade-purp) !important;
+}
+
+.product-item {
+  width: min(100% - 2em, 25rem);
+  display: grid;
+  grid-template-rows: auto max-content auto;
+  gap: 0.5em;
+}
+
+.product-item.product-long {
+  width: initial;
+  grid-template-columns:
+    minmax(6rem, 12rem) minmax(auto, 50rem) minmax(auto, 8rem)
+    auto;
+  grid-template-areas: "img title price btn";
+  grid-template-rows: auto;
+  grid-gap: 0.5em 1em;
+  align-items: center;
+  padding-inline-end: 1em;
+  border-radius: 0.5em;
+  border: 1px solid var(--clr-neutral-100);
+  align-self: start;
+}
+
+.product-item:not h2 {
+  align-self: start;
+}
+
+.product-item.product-long .feat-img-wrap {
+  grid-area: img;
+}
+
+.product-item.product-long .price {
+  grid-area: price;
+  align-self: initial;
+}
+
+.product-item.product-long > .btn {
+  justify-self: end;
+  grid-area: btn;
+}
+
+.product.active.product-long .feat-img-wrap {
+  max-width: 60rem;
+}
+
+.product-item.product-long .btn {
+  font-weight: 500;
+  font-size: 1.125em;
+  padding: 0.5em 1.25em;
+  background-image: var(--clr-bg-grade-blue);
+  background-blend-mode: multiply;
+  background-size: cover;
+  border-radius: 0.5em;
+  text-align: center;
+  transition: background-image 300ms;
+}
+
+.product-item.product-long .btn:is(:hover, :focus) {
+  background-image: var(--clr-bg-grade-purp);
+}
+
+.product-cart input[type="number"] {
+  width: 3ch;
+  border: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+.product-cart input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* FILTER SECTION */
+
+.filter {
+  padding: 3em;
+}
+
+.filter h2 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.filter-list h3 {
+  margin-block-end: 0.625em;
+  background-image: var(--clr-bg-grade-purp);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.filter ul:not(.filter-list) {
+  margin-block: 2em;
+  margin-inline-start: 0.5em;
+}
+
+/* checkboxes */
+.checkbox-wrapper {
+  --borderColor: #a186ed;
+  --borderWidth: 0.1em;
+  margin-block-end: 0.5em;
+  margin-inline-start: 0.5em;
+}
+
+.checkbox-wrapper label {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  background: transparent;
+  font-size: 1.8em;
+  border-radius: 0.125em;
+  display: inline-block;
+  border: var(--borderWidth) solid var(--borderColor);
+  width: 0.75em;
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"]:before,
+.checkbox-wrapper input[type="checkbox"]:after {
+  content: "";
+  position: absolute;
+  background: var(--clr-primary);
+  width: calc(var(--borderWidth) * 3);
+  height: var(--borderWidth);
+  top: 50%;
+  left: 10%;
+  transform-origin: left center;
+}
+
+.checkbox-wrapper input[type="checkbox"]:before {
+  transform: rotate(45deg)
+    translate(calc(var(--borderWidth) / -2), calc(var(--borderWidth) / -2))
+    scaleX(0);
+  transition: transform 200ms ease-in 200ms;
+}
+
+.checkbox-wrapper input[type="checkbox"]:after {
+  width: calc(var(--borderWidth) * 5);
+  transform: rotate(-45deg) translateY(calc(var(--borderWidth) * 2)) scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms ease-in;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked:before {
+  transform: rotate(45deg)
+    translate(calc(var(--borderWidth) / -2), calc(var(--borderWidth) / -2))
+    scaleX(1);
+  transition: transform 200ms ease-in;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked:after {
+  width: calc(var(--borderWidth) * 5);
+  transform: rotate(-45deg) translateY(calc(var(--borderWidth) * 2)) scaleX(1);
+  transition: transform 200ms ease-out 200ms;
+}
+
+.checkbox-wrapper input[type="checkbox"]:focus {
+  outline: calc(var(--borderWidth) / 2) dotted rgba(0, 0, 0, 0.25);
+}
+
+/* FOOTER */
+.page-footer {
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-neutral-100);
+  border-top: 0.5rem solid;
+  border-image: var(--clr-bg-grade-purp);
+  border-image-slice: 1;
+}
+
+.footer-info-bar {
+  background-image: var(--clr-bg-grade-purp);
+  color: var(--clr-neutral-100);
+  width: 100%;
+}
+
+.page-footer .container {
+  padding-inline: 4em;
+  padding-block: 1em;
+  width: 100%;
+}
+
+.page-footer .container:has(.logo) {
+  padding-block: 4em;
+}
+
+.page-footer .container.grid {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: baseline;
+  justify-items: center;
+}
+
+/* VIRTUAL ASSISTANT */
+.assistant-wrapper {
+  color: white;
+  position: fixed;
+  bottom: 10%;
+  right: 1em;
+  transform-origin: bottom right;
+  width: min(100% - 1em, 30rem);
+}
+
+.assistant-wrapper:has(.assistant-box.hide) {
+  width: min-content;
+  height: min-content;
+}
+
+.assistant-box {
+  background-color: var(--clr-neutral-100);
+  border-radius: 0.5em;
+  overflow: hidden;
+  transition: scale 500ms ease-in;
+  transform-origin: bottom right;
+  border: 1px solid #56a5e6;
+}
+
+.assistant-box-header {
+  background-image: var(--clr-bg-grade-blue);
+  padding: 2em 1.5em 1.5em;
+  text-align: center;
+}
+
+.assistant-box-main {
+  color: var(--clr-neutral-900);
+  grid-template-columns: auto 4em auto;
+  padding: 0.5em;
+  overflow-y: scroll;
+  min-height: 40vh;
+  max-height: 40vh;
+}
+
+.assistant-box-main::-webkit-scrollbar-thumb {
+  background: var(--clr-bg-grade-blue);
+}
+
+.assistant-chat-item.assistant-side {
+  grid-template-columns: minmax(3rem, 6rem) auto;
+  grid-template-areas:
+    ". bubble"
+    ". bubble"
+    "img bubble";
+  grid-column-gap: 0.5em;
+  align-items: end;
+  padding: 0.5em;
+  grid-column: 1 / span 2;
+}
+
+.assistant-chat-item.client-side {
+  grid-column: 2 / span 2;
+  justify-self: end;
+}
+
+.assistant-chat-bubble-wrapper {
+  grid-area: bubble;
+  justify-self: start;
+  grid-column: 2;
+}
+
+.chat-bubble {
+  border-radius: 0.5em;
+  margin-block: 0.5em;
+  padding: 1em;
+  width: fit-content;
+  max-width: 25ch;
+}
+
+.assistant-side .chat-bubble {
+  background-color: rgb(203, 203, 203);
+}
+
+.client-side .chat-bubble {
+  background-color: rgb(112, 183, 241, 0.4);
+  width: fit-content;
+  margin-left: auto;
+}
+
+.assistant-side .chat-avatar {
+  object-fit: cover;
+  grid-area: img;
+}
+
+.assistant-box-footer {
+  border-top: 1px solid rgb(0, 0, 0, 0.5);
+  box-shadow: 0 -0.5rem 0 0 var(--clr-neutral-100);
+  z-index: 10;
+  position: relative;
+}
+
+.assistant-box-footer .chat {
+  width: 100%;
+  color: var(--clr-neutral-900);
+  border: none;
+  padding: 0.5em 1em;
+}
+
+.assistant-box-footer .chat:focus {
+  outline: none;
+}
+
+.assistant-box-footer .chat:focus::placeholder {
+  opacity: 1;
+}
+
+.send-btn {
+  background-image: var(--clr-bg-grade-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding: 0.5em;
+  font-size: 1.7em;
+}
+
+.assistant-btn {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0.25em 1em;
+  background-image: var(--clr-bg-grade-blue);
+  align-self: end;
+}
+
+/* cookie banner */
+
+.cookie-banner {
+  background-color: var(--clr-neutral-100);
+  padding: 2em 3em;
+  flex-wrap: wrap;
+  color: var(--clr-neutral-900);
+  align-self: end;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.cookie-banner .btn {
+  font-weight: 500;
+  padding: 0.5em 1.25em;
+  border-radius: 0.5em;
+}
+
+.cookie-btn-primary {
+  outline: 1px solid;
+}
+
+.cookie-btn-secondary {
+  background-image: var(--clr-bg-grade-purp);
+  color: white;
+  outline: 1px solid #5c3db1;
+}
+
+.cookie-btn-primary:is(:hover, :focus) {
+  outline-width: 2px;
+}
+
+.cookie-btn-secondary:is(:hover, :focus) {
+  background-image: var(--clr-bg-grade-blue);
+}
+
+/* row vs grid icons */
+
+.view-icon-wrapper {
+  margin-block-start: 2em;
+  padding: 0 1em;
+}
+
+.radio-icon {
+  display: none;
+}
+
+.view-icon {
+  cursor: pointer;
+}
+
+.view-icon > svg {
+  transition: fill 300ms;
+  pointer-events: none;
+}
+
+.radio-icon:checked ~ .view-icon > svg {
+  fill: white;
+}
+
+/*payment form dialog el */
+
+.payment-wrapper [btn-close] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.payment-form {
+  display: grid;
+  gap: 2em;
+}
+
+.payment-form fieldset {
+  border: none;
+  display: grid;
+  gap: 0.25em;
+}
+
+.payment-form input:is([type="text"], [type="number"], [type="email"]) {
+  border: none;
+  padding: 0.5em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+.payment-form input:is(:focus) {
+  outline: none;
+}
+
+.payment-form input:is(:focus)::placeholder {
+  opacity: 1;
+}
+
+.payment-form-btn {
+  background-image: var(--clr-bg-grade-blue);
+  color: white;
+  font-weight: 700;
+  padding: 1em 1.25em;
+  border-radius: 0.5em;
+}
+
+.payment-form-btn:is(:hover, :focus) {
+  outline: none;
+  background-image: var(--clr-bg-grade-purp);
+}
+
+.payment-options {
+  position: relative;
+  padding: 1em 1.5em;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.payment-options:has(.option-btn:checked) {
+  outline: none;
+  background-image: var(--clr-bg-grade-blue);
+  color: var(--clr-neutral-100);
+}
+
+.option-btn {
+  position: absolute;
+  inset: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.paypal-btn {
+  width: max-content;
+  margin-inline: auto;
+  font-weight: 500;
+}
+
+.payment-trigger:has(.option-card:checked) ~ .pay-with-cash,
+.payment-trigger:has(.option-card:checked) ~ .pay-with-paypal {
+  display: none;
+}
+
+.payment-trigger:has(.option-cash:checked) ~ .pay-with-card,
+.payment-trigger:has(.option-cash:checked) ~ .pay-with-paypal {
+  display: none;
+}
+
+.payment-trigger:has(.option-paypal:checked) ~ .pay-with-card,
+.payment-trigger:has(.option-paypal:checked) ~ .pay-with-cash {
+  display: none;
+}
+
+/* PURCHASE COMPLETED MODAL STYLES */
+.purchase-complete[open] {
+  background-color: rgba(0 0 0 / 0);
+  padding: 0;
+  width: min(100% - 1em, 60rem);
+  border: none;
+  display: grid;
+  gap: 2em;
+  overflow-y: clip;
+}
+
+.purchase-complete svg {
+  pointer-events: none;
+}
+.purchase-complete-start {
+  background-color: var(--clr-neutral-100);
+  padding: 3em;
+  text-align: center;
+  position: relative;
+  border-radius: inherit;
+}
+
+.purchase-complete-start [btn-close] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.purchase-complete-start img {
+  margin-inline: auto;
+  margin-block-end: 1em;
+}
+
+.purchase-complete-end {
+  background-color: var(--clr-neutral-100);
+  padding: 2em;
+  border-radius: inherit;
+  flex-wrap: wrap;
+}
+
+.feedback-btn {
+  padding: 0.75em 1.5em;
+  border-radius: 0.5em;
+  background-image: var(--clr-bg-grade-blue);
+  color: var(--clr-neutral-100);
+  transition: background-image 3000ms;
+  flex-grow: 1;
+}
+
+.feedback-btn:is(:hover, :focus) {
+  outline: none;
+  background-image: var(--clr-bg-grade-purp);
+}
+
+.purchase-complete-end > p {
+  flex-basis: 100%;
+}
+
+/* CONFETTI AT THE BOTTOM OF FILE */
+
+/* FEEDBACK MODAL */
+
+.feedback-modal[open] {
+  position: relative;
+}
+
+.feedback-modal[open] [btn-close] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+}
+/* FEEDBACK FORM */
+
+.feedback {
+  background-color: #fff;
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+.feedback .desat {
+  opacity: 0.8;
+}
+
+.feedback h {
+  margin-block-end: 0.325em;
+}
+
+.emoji-row {
+  margin-inline: auto;
+  margin-block: 0.5em;
+  cursor: pointer;
+}
+
+.rating {
+  padding: 0.25em 0.75em;
+}
+
+.rating:hover {
+  outline: 1px solid rgb(67, 12, 143);
+}
+
+.rating:hover .desat {
+  opacity: 1;
+}
+
+.emoji {
+  font-size: 4em;
+}
+
+.feedback label[for="message"] {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  margin-block-end: 0.25em;
+}
+
+.feedback textarea[name="message"] {
+  text-align: left;
+  display: block;
+  width: 100%;
+  resize: none;
+  padding: 0.25em 0.5em;
+  border-color: rgb(21, 21, 21, 0.6);
+  margin-block-end: 1em;
+}
+
+.feedback form > .btn {
+  background-image: var(--clr-bg-grade-blue);
+  color: #fff;
+  padding: 0.5em 1.25em;
+  border-radius: 0.5em;
+  font-weight: 500;
+}
+
+.feedback form > .btn:is(:hover, :focus) {
+  background-image: var(--clr-bg-grade-purp);
+}
+
+/* FAQS DIALOG STYLES*/
+
+.faqs {
+  overflow-y: scroll;
+  max-height: 80dvh;
+  position: relative;
+}
+
+.faqs [btn-close] {
+  position: absolute;
+  padding: 1em;
+  top: 0;
+  right: 0;
+}
+
+.faqs h2,
+.faqs > p {
+  text-align: center;
+  margin-block-end: 0.5rem;
+}
+
+.accordion-btn {
+  width: calc(100% - 1em);
+  margin-block-end: 1rem;
+  cursor: pointer;
+}
+
+.faqs .accordion-wrap {
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25em;
+  margin-block: 0.25em;
+}
+
+/* NEWSLETTER MODAL*/
+.newsletter-modal[open] {
+  background: none;
+  border: none;
+  border-radius: 0.25em;
+  color: white;
+  width: min(100% - 1em, 80rem);
+  position: relative;
+}
+
+.newsletter-modal[open] [btn-close] {
+  fill: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  &:focus,
+  &:hover {
+    outline: none;
+    scale: 1.2;
+  }
+}
+
+.newsletter-component {
+  background-image: linear-gradient(
+    to right,
+    #70b7f1,
+    #56a5e6,
+    #0c6cba,
+    #3d5eb1,
+    #563db1,
+    #5c3db1,
+    #8b64f5,
+    #a186ed
+  );
+  background-blend-mode: overlay;
+  background-size: cover;
+  padding: 12rem 1rem;
+  text-align: center;
+  align-self: center;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.newsletter-component::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0, 0, 0, 0.65);
+  z-index: -1;
+}
+
+.newsletter-component::after {
+  content: "";
+  background-image: url(Images/snowflakes.png);
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  z-index: -2;
+}
+
+.newsletter-component h3 {
+  font-size: 3em;
+  filter: drop-shadow();
+  margin-block-end: 0.75rem;
+}
+
+.newsletter-component p {
+  max-width: 72ch;
+  text-wrap: balance;
+  margin-inline: auto;
+  font-size: 1.2em;
+}
+
+.newsletter-modal[open] .newsletter-input-wrapper {
+  background-color: var(--clr-neutral-100);
+  padding: 0.35em;
+  border-radius: 100vw;
+  margin-inline: auto;
+  max-width: 60ch;
+  margin-block: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+.newsletter-input {
+  border: none;
+  background: none;
+  width: 100%;
+  color: black;
+  padding: 0 0.5em;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.newsletter-input:focus::placeholder {
+  opacity: 1;
+}
+
+.newsletter-submit-btn {
+  background-image: var(--clr-bg-grade-purp);
+  padding: 0.75em 1.25em;
+  border-radius: calc(100vw - 0.5em);
+  font-weight: 700;
+
+  &:focus,
+  &:hover {
+    background-image: var(--clr-bg-grade-blue);
+  }
+}
+
+/* GIFT CARD MODAL */
+.gift-card-modal[open] {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.gift-card {
+  background-color: white;
+  border-radius: 0.25em;
+  text-align: center;
+}
+
+.gift-card h3 {
+  font-family: "Josefin Sans";
+  margin-block-end: 1rem;
+}
+
+.gift-card > p {
+  font-size: 1em;
+}
+.value-row {
+  margin-block-start: 1rem;
+}
+
+.amount {
+  padding: 0.25em 0.5em;
+  font-size: 2em;
+  width: 7ch;
+  border: none;
+  outline: none;
+  border: 1px solid #282828;
+  text-align: center;
+}
+
+.increment {
+  font-size: 1.1em;
+}
+
+.card-amounts {
+  grid-template-columns: repeat(auto-fit, 30%);
+  margin-block: 1em;
+}
+
+.card-amounts p {
+  padding: 0.25em;
+}
+
+.card-amounts > p:hover {
+  outline: 1px solid #282828;
+  cursor: pointer;
+}
+
+.gift-card-modal [btn-close] {
+  padding: 1em;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.gift-card .btn {
+  background-image: var(--clr-bg-grade-blue);
+  color: white;
+  font-weight: 500;
+  padding: 0.5em 1.25em;
+  border-radius: 0.5em;
+  transition: background-image 300ms ease;
+}
+
+.gift-card .btn:is(:hover, :focus) {
+  background-image: var(--clr-bg-grade-purp);
+}
+
+.gift-card .xmas-gift {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-60%);
+  rotate: -20deg;
+  width: min(100% - 2em, 12rem);
+}
+
+/* coupon modal */
+.coupon-modal[open] {
+  padding: 0;
+}
+
+.coupon {
+  background-color: var(--clr-bg-card);
+  border-radius: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  /* width: min(100% - 1em, 35em); */
+  transform: scaleY(1);
+  transition: transform 400ms;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  color: var(--clr-neutral-900);
+}
+
+.content {
+  padding: 6em 1em 4em;
+  background-color: var(--clr-neutral-100);
+}
+
+.content > * {
+  margin-inline: auto;
+  margin-block-end: 0.75rem;
+  text-align: center;
+}
+
+.content > h3 {
+  color: var(--clr-neutral-900);
+  font-size: 2em;
+}
+.content > p {
+  font-size: 0.825em;
+}
+
+.coupon .img {
+  background-image: url(Images/snowflakes_2.jpg);
+  background-size: cover;
+}
+
+.coupon [btn-close] {
+  position: absolute;
+  padding: 1em;
+  right: 0;
+  top: 0;
+  background: none;
+  border: none;
+}
+
+.coupon button,
+.coupon input {
+  display: block;
+}
+
+.coupon-btn {
+  background-image: var(--clr-bg-grade-blue);
+  padding: 0.5em 1.25em;
+  border-radius: 100vw;
+  color: white;
+  transition: 300ms;
+  width: 100%;
+  margin-block-end: 2em;
+  outline: 1px solid var(--clr-bg-body);
+}
+
+.coupon-btn:is(:hover, :focus) {
+  background-image: var(--clr-accent);
+}
+
+.coupon input {
+  padding: 0.5em 0.75em;
+  border: none;
+  border: 1px solid rgb(0 0 0 /0.3);
+  border-radius: 100vw;
+  width: 100%;
+  margin-block-start: 2em;
+}
+
+.coupon input:is(:focus) {
+  outline-color: var(--clr-accent);
+}
+
+.coupon inut:focus ::placeholder {
+  opacity: 1;
+}
+
+.sale {
+  font-size: 1.325em;
+  background-color: #f7efd8;
+  color: var(--clr-accent);
+  font-weight: 800;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  width: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  rotate: -15deg;
+  position: absolute;
+  top: 0.325em;
+}
+
+.coupon .desat:is(:hover, :focus) {
+  color: rgb(4, 26, 49, 0.8);
+  outline-offset: 0.5em;
+  outline-color: var(--clr-accent);
+  border-radius: 100vw;
+}
+
+/* utility classes */
+.small {
+  font-size: var(--fs-small);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.price {
+  font-weight: 700;
+  align-self: end;
+  line-height: 1;
+}
+
+.logo {
+  font-family: ui-sans-serif, system-ui;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.325em;
+}
+
+.desat {
+  opacity: 0.7;
+}
+
+.hide {
+  display: none;
+}
+
+.required {
+  color: red;
+}
+
+.purple-gradient {
+  background-image: var(--clr-bg-grade-purp);
+}
+
+.container {
+  width: 100%;
+  max-width: 130rem;
+  position: relative;
+}
+
+.hidden {
+  scale: 0;
+  pointer-events: none;
+  transition: 500ms ease-out;
+}
+
+.fa-comment-lines {
+  pointer-events: none;
+  font-size: 1.5em;
+}
+
+i {
+  pointer-events: none;
+}
+
+dialog[open] {
+  background-color: var(--clr-neutral-100);
+  padding: 2em;
+  border-radius: 0.5em;
+  position: relative;
+  color: var(--clr-neutral-900);
+  width: min(100% - 1em, 50rem);
+  margin: auto;
+  border: none;
+  overflow-x: clip;
+}
+
+dialog::backdrop {
+  background-color: rgba(0 0 0 / 0.7);
+}
+
+dialog [btn-close-checkout] dialog [btn-close] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  cursor: pointer;
+}
+
+dialog [btn-close]:focus {
+  outline: none;
+  scale: 1.2;
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 810px) {
+  .card {
+    grid-template-columns: repeat(auto-fit, 15rem);
+  }
+
+  .product-item:not(.product-long) {
+    width: min(100% - 2em, 15rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .page-footer .container.grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+    justify-content: space-between;
+  }
+
+  .page-footer .container.grid .col:nth-of-type(1) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 510px) {
+  .content-wrap {
+    flex-direction: column;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .menu-mobile {
+    display: block;
+    z-index: 5;
+    font-size: 1.2em;
+  }
+
+  .nav {
+    position: relative;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .nav-visible {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    padding: 1em 2em;
+    z-index: 5;
+  }
+
+  .feat-products .product.active {
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-template-areas:
+      "img"
+      "title"
+      "price"
+      "stars"
+      "body"
+      "btn";
+  }
+
+  .feat-products .btn {
+    justify-self: stretch;
+    justify-content: center;
+  }
+
+  .filter-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+  }
+
+  .filter {
+    padding-block-end: 1em;
+  }
+
+  .page-footer .container {
+    padding-inline: 1em;
+  }
+
+  .card.cardRowView {
+    grid-template-columns: repeat(auto-fit, 1fr);
+  }
+
+  .product-item:is(.product-long) {
+    grid-template-columns: minmax(8rem, 1fr) auto;
+    grid-template-areas:
+      " img img"
+      "title btn"
+      "price .";
+    grid-gap: 0.5em;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  .gift-card .xmas-gift {
+    width: min(100% - 2em, 8rem);
+  }
+
+  .emoji-row {
+    flex-wrap: wrap;
+  }
+
+  .component {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .search-bar:focus-within {
+    width: 10.5rem;
+    --size: 3rem;
+  }
+
+  .coupon {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr;
+  }
+
+  .content {
+    position: relative;
+  }
+}
+
+/* featured products view-transitions */
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shrink-x {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes move {
+  0% {
+    background-image: linear-gradient(to right, #0c6cba, #a0d4ff, #063358);
+  }
+
+  25% {
+    background-image: linear-gradient(
+      to right,
+      #a0d4ff,
+      #0c6cba,
+      #a0d4ff,
+      #063358
+    );
+  }
+
+  75% {
+    background-image: linear-gradient(to right, #0c6cba, #a0d4ff, #063358);
+  }
+
+  100% {
+    background-image: linear-gradient(
+      to right,
+      #a0d4ff,
+      #0c6cba,
+      #a0d4ff,
+      #063358
+    );
+  }
+}
+
+.product::view-transition-old(*) {
+  animation: 0.25s linear both shrink-x;
+}
+.product::view-transition-new(*) {
+  animation: 0.25s 0.25s linear both grow-x;
+}
+
+/* ::view-transition-old(product-1) {
+    animation: 0.25s linear both shrink-x;
+}  */
+/* ::view-transition-new(product-1) {
+    animation: 0.25s 0.25s linear both grow-x;
+} */
+
+/* ::view-transition-old(product-2) {
+    animation: 0.25s linear both shrink-x;
+} */
+
+/* ::view-transition-new(product-2) {
+    animation: 0.25s 0.25s linear both grow-x;
+} */
+
+/* ::view-transition-old(product-3) {
+    animation: 0.25s linear both shrink-x;
+} */
+
+/* ::view-transition-new(product-3) {
+    animation: 0.25s 0.25s linear both grow-x;
+} */
+
+@keyframes overflow {
+  100% {
+    overflow: hidden;
+  }
+}
+
+/* Confetti */
+
+@keyframes confetti {
+  0% {
+    top: -100%;
+  }
+
+  33% {
+    top: 0;
+  }
+
+  66% {
+    top: 50%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+.purchase-complete[open] .confetti {
+  content: "";
+  animation: 6s confetti infinite linear both;
+  z-index: 5;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 2000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath fill=%22rgba(255%2C 255%2C 255%2C 0)%22 d=%22M0 0h2000v1000H0z%22%2F%3E%3Crect x=%221207%22 y=%2249%22 width=%225%22 height=%2214%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.98112 .67983 -.30171 .81018 72.771 -395.155)%22%2F%3E%3Crect x=%221871%22 y=%22306%22 width=%227%22 height=%2217%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.99196 .30977 -.17526 -.95338 3776.215 -97.407)%22%2F%3E%3Crect x=%22444%22 y=%22592%22 width=%225%22 height=%2210%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.78691 .47671 -.61773 -.89657 1345.095 840.669)%22%2F%3E%3Crect x=%221924%22 y=%22633%22 width=%226%22 height=%226%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.8938 .7171 -.43604 .769 459.957 -608.8)%22%2F%3E%3Crect x=%22498%22 y=%22337%22 width=%229%22 height=%2222%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.97723 .55953 -.3384 .82954 213.602 -204.299)%22%2F%3E%3Crect x=%22968%22 y=%22179%22 width=%225%22 height=%228%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(.62689 .85216 -.73453 .5967 415.189 -474.933)%22%2F%3E%3Crect x=%221267%22 y=%22773%22 width=%228%22 height=%2217%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.86548 .5003 -.49973 -.86655 2787.302 778.44)%22%2F%3E%3Crect x=%22161%22 y=%22485%22 width=%227%22 height=%2220%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(1.10823 .65468 -.1589 .80846 216.32 34.285)%22%2F%3E%3Crect x=%221193%22 y=%22226%22 width=%227%22 height=%2212%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.90008 .30977 -.45802 .95338 212.834 -443.493)%22%2F%3E%3Crect x=%22810%22 y=%22214%22 width=%226%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.50486 .83082 -.82319 -.62607 1325.305 -82.972)%22%2F%3E%3Crect x=%22114%22 y=%22848%22 width=%228%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.0847 .8917 -1.06854 -.55719 1199.118 1264.519)%22%2F%3E%3Crect x=%221973%22 y=%22188%22 width=%226%22 height=%2213%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(.89946 .37512 -.43957 .92846 247.567 -623.765)%22%2F%3E%3Crect x=%22645%22 y=%22847%22 width=%227%22 height=%2213%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.4656 .8336 -.88556 -.56227 1873.195 724.648)%22%2F%3E%3Crect x=%2297%22 y=%22207%22 width=%229%22 height=%2222%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.01736 .99677 -1.00661 -.19375 327.418 176.963)%22%2F%3E%3Crect x=%221982%22 y=%22150%22 width=%229%22 height=%2225%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.71598 .67945 -.6766 -.7546 3482.234 -1414.883)%22%2F%3E%3Crect x=%221703%22 y=%22318%22 width=%225%22 height=%229%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.43837 1.01626 -.8988 .19754 1247.72 -1017.443)%22%2F%3E%3Crect x=%22220%22 y=%22282%22 width=%226%22 height=%229%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.04931 .89633 -1.14529 -.53857 655.37 309.096)%22%2F%3E%3Crect x=%22507%22 y=%2242%22 width=%226%22 height=%228%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.99576 -.07083 -.12221 1.01295 8.552 -54.398)%22%2F%3E%3Crect x=%221864%22 y=%22904%22 width=%229%22 height=%2216%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.89859 .86189 -.62032 .51788 1136.867 -974.354)%22%2F%3E%3Crect x=%221765%22 y=%22937%22 width=%226%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.82578 .51788 -.55665 -.86189 3694.234 1027.844)%22%2F%3E%3Crect x=%22731%22 y=%22116%22 width=%225%22 height=%228%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.08749 1 -1.00153 -.01746 801.13 -598.602)%22%2F%3E%3Crect x=%22863%22 y=%22113%22 width=%226%22 height=%2216%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.85065 .30902 -.61803 -.95106 1716.761 -31.53)%22%2F%3E%3Crect x=%22157%22 y=%2229%22 width=%229%22 height=%2226%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(1.03216 .2818 .0509 .98274 2.04 -10.457)%22%2F%3E%3Crect x=%22172%22 y=%22596%22 width=%228%22 height=%2220%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.46827 .74047 -.91382 -.6905 890.022 921.996)%22%2F%3E%3Crect x=%221011%22 y=%22267%22 width=%228%22 height=%229%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.30906 .9563 -.9512 .29237 964.29 -778.528)%22%2F%3E%3Crect x=%22979%22 y=%22534%22 width=%228%22 height=%2215%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.17586 1.00598 -1.00944 .08801 1652.95 -633.193)%22%2F%3E%3Crect x=%22853%22 y=%22595%22 width=%226%22 height=%229%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.84219 .65967 -.54708 -.75887 1887.092 399.791)%22%2F%3E%3Crect x=%221189%22 y=%22653%22 width=%228%22 height=%2213%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.12446 1.00617 -.97415 -.15936 1842.753 -203.871)%22%2F%3E%3Crect x=%22722%22 y=%22240%22 width=%226%22 height=%226%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(1.0408 .8268 -.42518 .62304 207.43 -313.573)%22%2F%3E%3Crect x=%221470%22 y=%22776%22 width=%225%22 height=%2211%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.49716 .70769 -.8609 -.78597 2854.874 860.686)%22%2F%3E%3Crect x=%22559%22 y=%22112%22 width=%227%22 height=%2215%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.5921 1.03512 -.95574 .01807 426.267 -314.192)%22%2F%3E%3Crect x=%22618%22 y=%22339%22 width=%226%22 height=%2215%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.89154 .6887 -.49595 .73854 284.795 -249.812)%22%2F%3E%3Crect x=%22599%22 y=%22971%22 width=%228%22 height=%2216%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.85655 .64318 -.53397 -.76651 1465.926 1362.635)%22%2F%3E%3Crect x=%221093%22 y=%2253%22 width=%227%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.81955 .63738 -.51994 .8158 173.018 -394.029)%22%2F%3E%3Crect x=%221223%22 y=%2241%22 width=%228%22 height=%229%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.17365 .9939 -.9848 -.12204 1484.875 -1232.777)%22%2F%3E%3Crect x=%22908%22 y=%22118%22 width=%226%22 height=%2216%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.31536 1.02234 -.97815 0 780.545 -611.713)%22%2F%3E%3Crect x=%221393%22 y=%22650%22 width=%225%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-1.02457 -.08781 -.3227 -1.00368 3274.52 1609.298)%22%2F%3E%3Crect x=%221913%22 y=%22734%22 width=%229%22 height=%2220%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.54125 1.01472 -.91904 .1246 1808.184 -886.845)%22%2F%3E%3Crect x=%221767%22 y=%22729%22 width=%226%22 height=%226%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.46142 .78298 -.90352 -.63405 3331.14 27.572)%22%2F%3E%3Crect x=%221364%22 y=%22674%22 width=%226%22 height=%2210%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-1.02888 -.12678 -.49193 -1.03255 3455.484 1945.388)%22%2F%3E%3Crect x=%2269%22 y=%22239%22 width=%228%22 height=%228%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.9949 .27568 -.15777 .9614 64.385 -9.473)%22%2F%3E%3Crect x=%22852%22 y=%22489%22 width=%228%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.75229 .39388 -.67683 -.9749 1862.702 920.516)%22%2F%3E%3Crect x=%22765%22 y=%2280%22 width=%225%22 height=%2212%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.03067 .96322 -1.04875 -.33166 875.625 -475.558)%22%2F%3E%3Crect x=%221074%22 y=%2259%22 width=%226%22 height=%2215%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.86884 .42288 -.50152 .90686 173.091 -486.853)%22%2F%3E%3Crect x=%2219%22 y=%22641%22 width=%228%22 height=%2215%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.95378 .39127 -.30883 .92177 292.307 40.529)%22%2F%3E%3Crect x=%221408%22 y=%22970%22 width=%226%22 height=%2211%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.3795 .85769 -.9379 .51535 1676.72 -786.7)%22%2F%3E%3Crect x=%22446%22 y=%22480%22 width=%229%22 height=%2212%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(1.02835 .1746 .10485 .99023 30.315 -26.563)%22%2F%3E%3Crect x=%22214%22 y=%2297%22 width=%229%22 height=%2226%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.99148 .08717 -.13932 -.99635 454.438 204.366)%22%2F%3E%3Crect x=%221608%22 y=%22575%22 width=%226%22 height=%2214%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.85714 .21428 -.63432 -1.0081 3552.24 1225.177)%22%2F%3E%3Crect x=%221045%22 y=%22559%22 width=%227%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.302 1.00137 -.99863 0 1451.267 -429.49)%22%2F%3E%3Crect x=%22570%22 y=%22603%22 width=%227%22 height=%2212%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.68529 .811 -.73516 .58922 662.22 -174.837)%22%2F%3E%3Crect x=%221024%22 y=%22117%22 width=%227%22 height=%2218%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.98011 .35974 -.22652 .93715 60.289 -271.815)%22%2F%3E%3Crect x=%22737%22 y=%22845%22 width=%228%22 height=%2214%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(.6409 .64367 -.7898 .7671 824.731 -317.359)%22%2F%3E%3Crect x=%22956%22 y=%22621%22 width=%228%22 height=%2212%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.36559 .93198 -.9178 .3956 1047.133 -363.693)%22%2F%3E%3Crect x=%22670%22 y=%22427%22 width=%226%22 height=%2212%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.42384 .84921 -.91272 .53065 700.396 -333.02)%22%2F%3E%3Crect x=%22699%22 y=%22607%22 width=%228%22 height=%2215%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.3511 .9514 -.92329 .34628 921.527 -155.785)%22%2F%3E%3Crect x=%22619%22 y=%2230%22 width=%225%22 height=%2213%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.99027 0 .20854 1.00983 -19.071 -87.705)%22%2F%3E%3Crect x=%221146%22 y=%22210%22 width=%229%22 height=%2210%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(.96348 .73685 -.45867 .68712 236.09 -639.209)%22%2F%3E%3Crect x=%221051%22 y=%22189%22 width=%225%22 height=%229%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.87715 .2758 -.56674 -.96185 2148.953 125.846)%22%2F%3E%3Crect x=%22641%22 y=%22533%22 width=%228%22 height=%2223%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.10543 1.02158 -1.00712 -.27373 1152.145 256.717)%22%2F%3E%3Crect x=%221786%22 y=%22641%22 width=%227%22 height=%2214%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.99863 -.23402 -.05234 -1.01364 3610.461 2236.74)%22%2F%3E%3Crect x=%22791%22 y=%22669%22 width=%226%22 height=%2211%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.5142 .84921 -.85626 .53065 913.201 -316.084)%22%2F%3E%3Crect x=%221201%22 y=%22656%22 width=%226%22 height=%2210%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-1.0214 .42789 -.14668 -.9176 2464.618 561.667)%22%2F%3E%3Crect x=%22644%22 y=%22193%22 width=%227%22 height=%2211%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.0556 .98829 -1.02065 -.15653 857.953 -432.958)%22%2F%3E%3Crect x=%22199%22 y=%22638%22 width=%226%22 height=%228%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.51095 .54154 -.9962 -.90128 1134.387 1176.863)%22%2F%3E%3Crect x=%221104%22 y=%22748%22 width=%229%22 height=%2220%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.13537 .95105 -1.10343 -.36508 2111.143 195.954)%22%2F%3E%3Crect x=%221633%22 y=%22148%22 width=%225%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.21191 .78139 -1.08896 -.70357 2321.347 -483.354)%22%2F%3E%3Crect x=%221589%22 y=%22130%22 width=%229%22 height=%2226%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.70485 .75887 -.70503 .65967 560.294 -993.104)%22%2F%3E%3Crect x=%221365%22 y=%22967%22 width=%229%22 height=%2215%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(1.0739 .2443 .21384 .97983 69.581 -122.443)%22%2F%3E%3Crect x=%221478%22 y=%22134%22 width=%228%22 height=%229%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.28993 .99386 -.94982 .19319 1164.308 -1126.436)%22%2F%3E%3Crect x=%221979%22 y=%2242%22 width=%226%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.3295 .83106 -.98103 -.56056 2651.634 -1710.073)%22%2F%3E%3Crect x=%221950%22 y=%22259%22 width=%225%22 height=%2211%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.7435 .46093 -.64513 -.94505 3527.704 248.904)%22%2F%3E%3Crect x=%22551%22 y=%22849%22 width=%229%22 height=%2220%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(1.1052 .46093 .09645 .94505 117.887 -28.35)%22%2F%3E%3Crect x=%221361%22 y=%22302%22 width=%225%22 height=%2213%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.35572 1.00229 -.9915 .0175 1292.568 -968.173)%22%2F%3E%3Crect x=%22334%22 y=%22723%22 width=%229%22 height=%2214%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.87443 .31134 -.52074 -.9582 1251.683 1282.535)%22%2F%3E%3Crect x=%22450%22 y=%2286%22 width=%228%22 height=%2214%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.12074 .99634 -.98885 -.12233 605.442 -387.68)%22%2F%3E%3Crect x=%221127%22 y=%22275%22 width=%229%22 height=%2220%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.73107 .401 -.77142 -.94472 2284.735 361.73)%22%2F%3E%3Crect x=%22442%22 y=%22300%22 width=%225%22 height=%2210%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.5506 .81697 -.824 .59356 386.281 -176.708)%22%2F%3E%3Crect x=%221449%22 y=%2257%22 width=%226%22 height=%2211%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.46363 .7071 -.95058 -.7071 2206.123 -920.025)%22%2F%3E%3Crect x=%221962%22 y=%22370%22 width=%229%22 height=%2212%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.1182 1.00368 -1.00668 -.08781 2156.282 -1806.168)%22%2F%3E%3Crect x=%22829%22 y=%22257%22 width=%227%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.95507 .17407 -.3283 -.98721 1742.244 436.93)%22%2F%3E%3Crect x=%22540%22 y=%2244%22 width=%226%22 height=%2211%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.76837 .37474 -.66682 -.97624 1004.528 60.35)%22%2F%3E%3Crect x=%22415%22 y=%22678%22 width=%227%22 height=%227%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.00068 .9854 -1.01469 -.17375 1208.128 402.134)%22%2F%3E%3Crect x=%22948%22 y=%2235%22 width=%227%22 height=%2213%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.05231 .99772 -.99863 -.06977 1043.59 -921.54)%22%2F%3E%3Crect x=%22700%22 y=%22662%22 width=%225%22 height=%228%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.66922 .91 -.7725 .44384 828.553 -157.603)%22%2F%3E%3Crect x=%22291%22 y=%22898%22 width=%225%22 height=%2211%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.71044 .77762 -.71068 -.6297 1081.647 1233.957)%22%2F%3E%3Crect x=%22728%22 y=%22193%22 width=%226%22 height=%226%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.08734 1.00061 -.9994 0 874.645 -509.918)%22%2F%3E%3Crect x=%22780%22 y=%2297%22 width=%229%22 height=%2224%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.8704 .7328 -.5241 .70766 177.087 -390.528)%22%2F%3E%3Crect x=%22945%22 y=%2234%22 width=%228%22 height=%2218%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.07115 .99635 -1.0099 -.08717 929.561 -915.35)%22%2F%3E%3Crect x=%22567%22 y=%22418%22 width=%229%22 height=%2217%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.80902 .61604 -.58779 .7885 359.837 -241.9)%22%2F%3E%3Crect x=%221583%22 y=%22781%22 width=%227%22 height=%2219%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.019 .89416 -1.10784 -.49564 2837.167 100.941)%22%2F%3E%3Crect x=%221281%22 y=%22957%22 width=%227%22 height=%2212%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(1.02217 -.1409 -.17625 1.00261 20.956 -24.964)%22%2F%3E%3Crect x=%221630%22 y=%22610%22 width=%228%22 height=%2217%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.90074 .44166 -.41737 -.90554 3248.837 657.531)%22%2F%3E%3Crect x=%22579%22 y=%22676%22 width=%225%22 height=%2214%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.45571 .70606 -.92763 -.75715 1568.228 945.376)%22%2F%3E%3Crect x=%22115%22 y=%22227%22 width=%226%22 height=%2211%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.95666 .29525 -.25793 .9657 38.904 -10.281)%22%2F%3E%3Crect x=%22908%22 y=%22777%22 width=%228%22 height=%2217%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.8321 .34628 -.60163 -.9514 2257.638 1361.466)%22%2F%3E%3Crect x=%22275%22 y=%22279%22 width=%229%22 height=%2222%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.75552 .59879 -.63016 -.82416 631.136 415.975)%22%2F%3E%3Crect x=%22445%22 y=%22654%22 width=%227%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.94846 .34333 -.3068 -.94328 990.608 1168.795)%22%2F%3E%3Crect x=%22394%22 y=%22332%22 width=%227%22 height=%229%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.42111 .7506 -.9396 -.69994 926.077 365.44)%22%2F%3E%3Crect x=%22249%22 y=%22255%22 width=%226%22 height=%2217%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.52218 .64859 -.89698 -.80094 660.011 373.934)%22%2F%3E%3Crect x=%22431%22 y=%22800%22 width=%226%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.15777 .96185 -.99443 .2758 1098.751 151.828)%22%2F%3E%3Crect x=%22712%22 y=%22102%22 width=%227%22 height=%2212%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.84306 .26925 -.5677 -1.00485 1396.43 229.042)%22%2F%3E%3Crect x=%221064%22 y=%22575%22 width=%226%22 height=%2214%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.8792 .32681 -.5065 -.94913 2370.864 879.036)%22%2F%3E%3Crect x=%2293%22 y=%22603%22 width=%226%22 height=%227%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.98783 .06993 -.1741 1 85.812 -13.426)%22%2F%3E%3Crect x=%221310%22 y=%2214%22 width=%228%22 height=%229%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.66936 .55996 -.79348 -.83018 2228.386 -633.066)%22%2F%3E%3Crect x=%221639%22 y=%22214%22 width=%226%22 height=%228%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.17449 .99324 -.96972 .21112 1556.834 -1748.448)%22%2F%3E%3Crect x=%22593%22 y=%22288%22 width=%229%22 height=%2217%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.94728 .38446 -.25645 .95157 61.875 -77.413)%22%2F%3E%3Crect x=%221288%22 y=%22323%22 width=%228%22 height=%2223%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.88445 .48845 -.4517 .88119 257.24 -432.698)%22%2F%3E%3Crect x=%221175%22 y=%22155%22 width=%229%22 height=%2212%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.01729 .99484 -1.01047 -.30415 1339.227 -625.233)%22%2F%3E%3Crect x=%221090%22 y=%22837%22 width=%227%22 height=%2214%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.98769 -.14553 -.15643 -1.03552 2305.568 2211.43)%22%2F%3E%3Crect x=%221936%22 y=%2214%22 width=%229%22 height=%2224%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.57912 .60578 -.85368 -.83378 3140.058 -644.016)%22%2F%3E%3Crect x=%22636%22 y=%22710%22 width=%226%22 height=%2213%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.83858 .51535 -.54479 -.85769 1613.735 979.41)%22%2F%3E%3Crect x=%221760%22 y=%22259%22 width=%226%22 height=%2216%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.2223 .92839 -.95894 -.49363 2366.942 -665.112)%22%2F%3E%3Crect x=%221273%22 y=%22412%22 width=%225%22 height=%2211%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.74658 1.0081 -.83328 .21428 896.009 -639.764)%22%2F%3E%3Crect x=%22725%22 y=%22942%22 width=%227%22 height=%2212%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.82195 .49756 -.52696 -.89763 1650.063 1604.663)%22%2F%3E%3Crect x=%2230%22 y=%22514%22 width=%226%22 height=%2212%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.95636 .41582 -.25686 .93395 107.387 27.636)%22%2F%3E%3Crect x=%22246%22 y=%22181%22 width=%228%22 height=%2210%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.91575 .48547 -.40779 -.87582 548.747 214.432)%22%2F%3E%3Crect x=%22143%22 y=%22680%22 width=%226%22 height=%2213%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.9962 .0175 -.08716 -1.00229 351.277 1382.227)%22%2F%3E%3Crect x=%221584%22 y=%22493%22 width=%227%22 height=%2211%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.98769 .2777 -.15643 .96848 97.527 -230.227)%22%2F%3E%3Crect x=%221216%22 y=%22910%22 width=%227%22 height=%2218%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(1.08774 .54873 -.14743 .84497 396.484 -376.966)%22%2F%3E%3Crect x=%221906%22 y=%22333%22 width=%227%22 height=%2220%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.53475 .69994 -.85525 -.7506 3251.329 -295.235)%22%2F%3E%3Crect x=%22944%22 y=%22735%22 width=%225%22 height=%225%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.14637 .94675 -1.00297 -.34459 2026.6 -20.68)%22%2F%3E%3Crect x=%22920%22 y=%22217%22 width=%226%22 height=%2210%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(.99055 .20842 -.13783 .98054 61.447 -252.593)%22%2F%3E%3Crect x=%22615%22 y=%22625%22 width=%229%22 height=%2210%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(.26485 1.00367 -1.00097 -.01752 1219.031 73.465)%22%2F%3E%3Crect x=%2249%22 y=%22861%22 width=%226%22 height=%2210%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.79501 .49229 -.5971 -.88811 872.381 1600.337)%22%2F%3E%3Crect x=%221837%22 y=%2299%22 width=%228%22 height=%2215%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.36684 .99832 -.96313 .10493 1315.4 -1581.517)%22%2F%3E%3Crect x=%22709%22 y=%22266%22 width=%227%22 height=%2210%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(.34433 1 -1.06693 -.19438 897.306 -250.327)%22%2F%3E%3Crect x=%22726%22 y=%22876%22 width=%225%22 height=%2210%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.45939 .83513 -.85125 -.62931 1657.997 1049.76)%22%2F%3E%3Crect x=%2241%22 y=%22454%22 width=%229%22 height=%2224%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.27602 .94552 -.96258 .32557 457.082 271.264)%22%2F%3E%3Crect x=%221673%22 y=%2233%22 width=%228%22 height=%2217%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.66249 .73685 -.73936 .68712 561.92 -1016.797)%22%2F%3E%3Crect x=%221414%22 y=%22145%22 width=%226%22 height=%2212%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(.32437 1.00388 -1.06508 -.21338 1264.38 -912.133)%22%2F%3E%3Crect x=%221928%22 y=%2216%22 width=%226%22 height=%2213%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(1.00403 .01746 .23087 1 0 0)%22%2F%3E%3Crect x=%221140%22 y=%22254%22 width=%226%22 height=%2213%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.66276 .9576 -.76295 .40648 604.756 -612.175)%22%2F%3E%3Crect x=%2224%22 y=%22174%22 width=%225%22 height=%225%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(-.7942 .39097 -.68673 -.92107 219.63 329.633)%22%2F%3E%3Crect x=%22694%22 y=%22651%22 width=%226%22 height=%2211%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.98722 .13926 -.15646 -.99087 1520.94 1185.605)%22%2F%3E%3Crect x=%22396%22 y=%22241%22 width=%229%22 height=%2222%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.98318 .01772 -.10198 -1.01527 791.737 571.37)%22%2F%3E%3Crect x=%221868%22 y=%22502%22 width=%229%22 height=%2216%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(.5299 1.04362 -1.02326 -.12814 1765.514 -770.423)%22%2F%3E%3Crect x=%22686%22 y=%22369%22 width=%226%22 height=%228%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.14059 1.00554 -1.01424 .14132 1137.742 -494.022)%22%2F%3E%3Crect x=%22330%22 y=%2271%22 width=%225%22 height=%2214%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.51834 .9601 -.86308 .3306 232.244 -208.392)%22%2F%3E%3Crect x=%221731%22 y=%22931%22 width=%228%22 height=%2222%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.97146 .19084 -.2423 -.98178 3712.489 1505.445)%22%2F%3E%3Crect x=%22633%22 y=%22414%22 width=%228%22 height=%2217%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(-.84498 .36934 -.5063 -.96216 1348.511 752.566)%22%2F%3E%3Crect x=%22587%22 y=%22405%22 width=%226%22 height=%2215%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(-.82613 .517 -.5593 -.86044 1358.848 410.78)%22%2F%3E%3Crect x=%221753%22 y=%22589%22 width=%228%22 height=%2215%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(.98951 .17389 -.13908 .98616 89.373 -205.182)%22%2F%3E%3Crect x=%22249%22 y=%22203%22 width=%225%22 height=%225%22 fill=%22%23a186ed%22 rx=%220%22 transform=%22matrix(.75623 .56227 -.65734 .8336 193.266 -133.651)%22%2F%3E%3Crect x=%22527%22 y=%22740%22 width=%229%22 height=%2216%22 fill=%22%230c6cba%22 rx=%220%22 transform=%22matrix(-.73403 .91 -.7409 -.44384 1358.777 512.144)%22%2F%3E%3Crect x=%2268%22 y=%22321%22 width=%229%22 height=%2212%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(.54597 .7885 -.84168 .61604 267.686 70.922)%22%2F%3E%3Crect x=%22992%22 y=%22123%22 width=%227%22 height=%2213%22 fill=%22%238b64f5%22 rx=%220%22 transform=%22matrix(.62335 .974 -.87127 .24285 554.004 -784.473)%22%2F%3E%3Crect x=%22346%22 y=%22477%22 width=%226%22 height=%2210%22 fill=%22%2356a5e6%22 rx=%220%22 transform=%22matrix(.84796 .44513 -.50794 .91266 334.673 -174.792)%22%2F%3E%3Crect x=%221745%22 y=%22515%22 width=%229%22 height=%2210%22 fill=%22%235c3db1%22 rx=%220%22 transform=%22matrix(-.95509 .44079 -.31046 -.90374 3570.124 34.913)%22%2F%3E%3Crect x=%22509%22 y=%22809%22 width=%226%22 height=%227%22 fill=%22%2370b7f1%22 rx=%220%22 transform=%22matrix(-.90617 .42268 -.42256 -.90645 1333.313 1323.637)%22%2F%3E%3C%2Fsvg%3E");
+}

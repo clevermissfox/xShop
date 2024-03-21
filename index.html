@@ -1,0 +1,817 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xShop</title>
+    <link rel="stylesheet" href="index.css">
+
+    <!-- OPEN SANS LINK -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- JOSEFIN SANS LINK -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
+</head>
+
+<body>
+    <!-- nav bar -->
+    <header class="header">
+
+        <div class="info-bar row jc-cen">
+            <div class="container row jc-cen ai-cen">
+                <p class="small" id="info-bar-text">Use code "Xmas" for a 20% discount at checkout</p>
+                <button type="button" aria-label="close info-bar" btn-close>
+                    <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                        <path
+                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <nav class="nav row jc-cen">
+
+            <div class="container row jc-sb ai-cen gap-2">
+
+                <ul class="row ai-cen gap-1">
+                    <p class="logo" data-home>xShop</p>
+                    <div class="search-bar">
+                        <label class="sr-only" for="search">Enter your search query</label>
+                        <input type="text" aria-label="search" id="search" role="search" placeholder="Search"
+                            class="search-bar-input">
+                        <button class="search-bar-button"><i class="fa-light fa-magnifying-glass"></i></button>
+                    </div>
+                </ul>
+
+                <ul class="row ai-cen gap-2">
+                    <button data-menu-mobile class="menu-mobile" aria-controls="primary-navigation">
+                        <span class="mobile-menu">
+                            <i class="fa-light fa-bars"></i>
+                        </span>
+                    </button>
+
+
+                    <ul class="nav-list row ai-cen gap-2">
+
+
+                        <li><a class="list-item" href="#feat-products" data-home>Featured</a></li>
+
+
+                        <li><a class="list-item" href="#shop-wrap" data-shop>Shop</a></li>
+
+
+                        <li><a class="list-item" id="trigger-faq" href="#faq-modal">FAQ</a></li>
+
+                    </ul>
+                    <button class="cart-btn" id="cart-btn">
+                        <li class="list-item"><i class="fa-sharp fa-light fa-bag-shopping"></i></li>
+                        <span class="cart-quantity"></span>
+                    </button>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- cart -->
+    <div class="cart grid hide">
+        <button type="button" aria-label="close cart" btn-close>
+            <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+        <ul>
+            <h2>Your cart</h2>
+
+            <div id="cart-products"></div>
+
+        </ul>
+
+        <ul>
+            <ul class="row ai-cen jc-sb">
+                <h2>Subtotal</h2>
+                <h2 id="subtotal">$0.00</h2>
+            </ul>
+            <button class="checkout row ai-cen">Proceed to checkout<i class="fa-solid fa-arrow-right"></i></button>
+        </ul>
+    </div>
+    <div class="wrapper-1">
+        <!-- hero component -->
+        <div class="hero-banner">
+
+            <h1>Unwrap Joy with Our Spectacular Christmas Sale!</h1>
+            <p>Explore a winter wonderland of discounts on a wide range of products, from dazzling decorations to
+                thoughtful
+                gifts that will warm hearts.</p>
+            <button class="btn hero-btn row ai-cen gap-half" data-shop>Shop Collection <i
+                    class="fa-solid fa-arrow-right"></i></button>
+
+        </div>
+        <!-- info card components -->
+        <div class="component-grid grid">
+            <article class="component shop-collection">
+                <div class="component-image"></div>
+                <div class="bar row ai-cen jc-sb gap-2">
+                    <ul>
+                        <p class="desat">Christmas Collection</p>
+                        <p class="fw-bold large">Shop collection now</p>
+                    </ul>
+
+                    <button class="btn-expand grid pc-cen" data-shop><i class="fa-light fa-arrow-down"></i></button>
+                </div>
+            </article>
+
+            <article class="component shop-gift-cards">
+                <div class="component-image row ai-end">
+
+                </div>
+                <div class="bar row ai-cen jc-sb gap-2">
+                    <ul>
+                        <p class="desat">Gift card</p>
+                        <p class="fw-bold large">Share the spirit with our Gift Cards</p>
+                    </ul>
+
+                    <button class="btn-nav row ai-cen gap-quarter" data-gift>Get Gift<i
+                            class="fa-light fa-arrow-right"></i></button>
+                </div>
+            </article>
+        </div>
+        <div class="feat-products" id="feat-products">
+            <h1>Featured Products</h1>
+            <p>Discover the magic of the season with our handpicked Featured Products. From enchanting decorations to
+                delightful gifts, these curated items are sure to add a touch of joy to your festive celebrations.</p>
+
+            <div class="featured-products-container row ai-cen gap-1 feat-img-row">
+                <!-- dynamically generate this list in renderFeaturedProducts -->
+                <!-- <div class="feat-img-wrap" data-tab-target="#case">
+                    <img src="https://i.imgur.com/bDYMlfg.jpg" alt="">
+                    <span class="tag uppercase" data-new>New</span>
+                </div>
+                <div class="feat-img-wrap" data-tab-target="#poster">
+                    <img src="https://i.imgur.com/bIPYxnC.jpg" alt="">
+                    <span class="tag uppercase" data-sale>-39%</span>
+                </div>
+                <div class="feat-img-wrap" data-tab-target="#brooch">
+                    <img src="https://i.imgur.com/kZ9QFqb.jpg" alt="">
+                </div> -->
+
+            </div>
+
+            <div class="featured-product-detail-container">
+                <!-- <section style="view-transition-name: product-1" data-tab-content id="case" class="product active">
+                <div class="feat-img-wrap">
+                    <img src="https://i.imgur.com/bDYMlfg.jpg" alt="">
+                    <span class="tag uppercase" data-new>New</span>
+                </div>
+            
+                <h2>Travel Jewelry Case</h2>
+                <p class="price">$18.99</p>
+                <div class="row ai-cen gap-quarter star-row">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="description">Elegantly packaged personalized gift box for jewelries, rings, earrings, bracelets, pendants, and necklaces.
+                
+                Perfect present for special occasions, including wedding, bridal party, bridal shower, engagement, bridesmaid gift
+                package, Mother's Day, Valentine's Day, Christmas, sweet sixteen, birthday, prom, graduation, anniversary, display,
+                keepsake, and showcase.</p>
+                <button class="btn row ai-cen gap-half" data-sku="1">Add to Cart <i class="fa-regular fa-cart-shopping"></i></button>
+            </section> -->
+
+                <!-- <section style="view-transition-name: product-2" data-tab-content id="poster" class="product">
+                <div class="feat-img-wrap">
+                    <img src="https://i.imgur.com/bIPYxnC.jpg" alt="">
+                    <span class="tag uppercase" data-sale>-39%</span>
+                </div>
+
+                <h2> Gold Heart Print - Set of 2</h2>
+                <p class="price">$59.99</p>
+                <div class="row ai-cen gap-quarter star-row">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="description">Each print is handmade in my studio using a process where specialized foils are fused to paper under high temperature
+                and pressure. Foil art catches the light to add a modern sparkle to any room. It also makes an amazing gift!</p>
+                <button class="btn row ai-cen gap-half" data-sku="2">Add to Cart <i class="fa-regular fa-cart-shopping"></i></button>
+            </section> -->
+
+                <!-- <section style="view-transition-name: product-3" data-tab-content id="brooch" class="product">
+                <div class="feat-img-wrap">
+                    <img src="https://i.imgur.com/kZ9QFqb.jpg" alt="">
+                </div>
+            
+                <h2>Hattie Carnegie Vintage Brooch</h2>
+                <p class="price">$189.99</p>
+                <div class="row ai-cen gap-quarter star-row">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="description">Exceptional HATTIE CARNEGIE Austrian crystal and black diamond baguette rhinestones, punctuated by a convex
+                    button center. Exquisite and eye-catching design!</p>
+                <button class="btn row ai-cen gap-half" data-sku="3">Add to Cart <i class="fa-regular fa-cart-shopping"></i></button>
+            </section> -->
+            </div>
+        </div>
+    </div>
+    <!-- >end wrap-1 -->
+    <!-- wraps the grid/row icons + filters and products -->
+    <div class="shop-wrap hide">
+        <div class="view-icon-wrapper row jc-end ai-cen gap-1">
+
+            <div class="view-icon-wrap">
+
+                <input type="radio" name="toggle-view-icon" id="radio-grid" class="radio-icon" checked>
+                <label for="radio-grid" class="view-icon grid pc-cen" aria-label="toggle to grid view">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="5.42857" height="5.42857" rx="1.5" stroke="white" />
+                        <rect x="9.07141" y="0.5" width="5.42857" height="5.42857" rx="1.5" stroke="white" />
+                        <rect x="9.07141" y="9.07143" width="5.42857" height="5.42857" rx="1.5" stroke="white" />
+                        <rect x="0.5" y="9.07143" width="5.42857" height="5.42857" rx="1.5" stroke="white" />
+                    </svg>
+
+                    <label>
+            </div>
+
+            <div class="view-icon-wrap">
+                <input type="radio" name="toggle-view-icon" id="radio-row" class="radio-icon">
+                <label for="radio-row" class="view-icon grid pc-cen" aria-label="toggle to row view">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="14" height="5.42857" rx="1.5" stroke="white" />
+                        <rect x="0.5" y="9.07143" width="14" height="5.42857" rx="1.5" stroke="white" />
+                    </svg>
+                    <label>
+            </div>
+
+        </div>
+        <div class="content-wrap">
+
+
+            <div class="filter">
+
+                <h2>Filters</h2>
+
+                <ul class="filter-list">
+
+                    <ul>
+                        <h3>Category</h3>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="jewelry" data-filter="jewelry" />
+                            <label for="jewelry">Jewelry</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="house" data-filter="house" />
+                            <label for="house">Household</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="art" data-filter="art" />
+                            <label for="art">Art</label>
+                        </div>
+                    </ul>
+
+                    <ul>
+                        <h3>Colours</h3>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="pink" data-filter="pink" />
+                            <label for="pink">Pink</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="gold" data-filter="gold" />
+                            <label for="gold">Gold</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="silver" data-filter="silver" />
+                            <label for="silver">Silver</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="black" data-filter="black" />
+                            <label for="black">Black</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="white" data-filter="white" />
+                            <label for="white">White</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="other" data-filter="other" />
+                            <label for="other">Other</label>
+                        </div>
+                    </ul>
+
+                    <ul>
+                        <h3>Price</h3>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="50" data-filter="50" />
+                            <label for="50">
+                                < $50</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="100" data-filter="100" />
+                            <label for="100">
+                                < $100</label>
+                        </div>
+
+                        <div class="checkbox-wrapper ai-cen row gap-quarter">
+                            <input class="checkboxes" type="checkbox" id="200" data-filter="200" />
+                            <label for="200">
+                                < $200</label>
+                        </div>
+                    </ul>
+                </ul>
+
+            </div>
+
+            <!-- where the products are rendered -->
+            <div id="itemsContainer" class="card grid ji-cen jc-cen">
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="page-footer grid pi-cen">
+        <div class="container grid gap-2">
+            <div class="col jc-sb gap-1">
+                <h2 class="logo">xShop</h2>
+                <ul>
+                    <p>At xShop we believe in spreading joy, creating memories, and making every moment magical. Embrace
+                        the spirit of xShop and make your holidays cheery and bright!</p>
+                </uL>
+
+            </div>
+
+            <div class="col gap-1">
+                <h3>Products</h3>
+                <ul class="col gap-half">
+                    <li data-filter="jewelry">
+                        <a class="list-item" href="" data-filter="jewelry">Jewelry</a>
+                    </li>
+                    <li data-filter="house">
+                        <a class="list-item" href="" data-filter="house">Household</a>
+                    </li>
+                    <li data-filter="art">
+                        <a class="list-item" href="" data-filter="art">Art</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col gap-1">
+                <h3>Client</h3>
+                <ul class="col gap-half">
+                    <li><a class="list-item" href="" data-gift>Gift Cards</a></li>
+                    <li><a class="list-item" id="trigger-newsletter" href="#newsletter-modal">Newsletter</a></li>
+                    <li><a class="list-item" href="">Cookies Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col gap-1">
+                <h3>About</h3>
+                <ul class="col gap-half">
+                    <li><a class="list-item" href="">Find a Store</a></li>
+                    <li><a class="list-item" href="">Return Policy</a></li>
+                    <li><a class="list-item" href="">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-info-bar row jc-cen">
+            <div class="container row jc-cen">
+                <p>&copy;2023 @clevermissfox. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- virtual assistant -->
+    <div class="assistant-wrapper col ai-end jc-end gap-2">
+        <div class="assistant-box hide">
+            <header class="assistant-box-header">
+                <h3>Virtual assistant</h3>
+                <p>Our virtual assistant is ready to assist you, making your online shopping experience seamless and
+                    enjoyable.</p>
+            </header>
+            <main class="assistant-box-main grid">
+
+                <div class="assistant-chat-item grid assistant-side">
+                    <img class="chat-avatar" src="/Images/tiny_santa.png" alt="">
+                    <div class="assistant-chat-bubble-wrapper">
+                        <div class="chat-bubble">
+                            <p>Hi there my child!</p>
+                        </div>
+                        <div class="chat-bubble">
+                            <p>What can I help you with?</p>
+                        </div>
+                        <p class="desat small">Santa Klaus, 7 minutes ago</p>
+                    </div>
+                </div>
+
+            </main>
+
+            <footer class="assistant-box-footer row ai-cen">
+                <label class="sr-only" for="chat">Type your query</label>
+                <input type="text" name="chat" id="chat" class="chat" placeholder="What can I help you with?">
+                <button class="send-btn" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+
+            </footer>
+
+        </div>
+        <button class="assistant-btn grid pc-cen">
+            <i class="fa-solid fa-comment-lines"></i>
+        </button>
+    </div>
+
+    <!-- cookie banner -->
+    <div class="cookie-banner row ai-cen jc-sb gap-2">
+        <p>By continuing to use this site, you consent to our use of cookies. For more information, please read our
+            Privacy
+            Policy.</p>
+        <div class="row ai-cen gap-1">
+            <button class="cookie-btn-primary btn">Learn More</button>
+            <button class="cookie-btn-secondary btn">Okay</button>
+        </div>
+    </div>
+
+    <!-- FAQ dialog triggered by FAQ link in nav -->
+    <dialog class="modal faqs" id="faq-modal">
+        <button type="button" aria-label="close faqs" btn-close>
+            <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+
+        <h2>Frequently asked questions</h2>
+
+        <p>Have questions? Explore our Frequently Asked Questions section for quick answers. If your question isn't
+            answered, feel free to reach out to our helpful support team.</p>
+
+
+        <div class="accordion-wrap">
+            <h3 class="accordion-btn row ai-cen jc-sb gap-2" id="accordion-title-1" aria-controls="accordion-content-1"
+                aria-expanded="true" type="button">
+                <button>When will my order ship?</button>
+                <i class="fa-light fa-xmark"></i>
+            </h3>
+            <div class="accordion-content" id="accordion-content-1" aria-labelledby="accordion-title-1"
+                aria-hidden="false" role="region">
+                <p>Orders typically ship within 1-2 business days. During peak holiday season, please allow up to 3
+                    business days for processing and shipping. You will receive an email notification with tracking
+                    information once your order has shipped.</p>
+            </div>
+        </div>
+
+        <div class="accordion-wrap">
+            <h3 class="accordion-btn row ai-cen jc-sb gap-2" id="accordion-title-2" aria-controls="accordion-content-2"
+                aria-expanded="false" type="button">
+                <button>What are your shipping rates?</button>
+                <i class="fa-light fa-plus"></i>
+            </h3>
+            <div class="accordion-content hide" id="accordion-content-2" aria-labelledby="accordion-title-2"
+                aria-hidden="true" role="region">
+                <p>Shipping rates vary due to the weight and distance of your order. You can always check the current
+                    rate
+                    from your cart which is calculated from the products added to your cart and the shipping address you
+                    input. Any orders $89.00 or over ship free!</p>
+            </div>
+        </div>
+
+        <div class="accordion-wrap">
+            <h3 class="accordion-btn row ai-cen jc-sb gap-2" id="accordion-title-3" aria-controls="accordion-content-3"
+                aria-expanded="false" type="button">
+                <button>Do you offer gift wrapping?</button>
+                <i class="fa-light fa-plus"></i>
+            </h3>
+            <div class="accordion-content hide" id="accordion-content-3" aria-labelledby="accordion-title-3"
+                aria-hidden="true" role="region">
+                <p>Gift wrapping is a service available for most products! Fee's range from $4.99 to $29.99 and you will
+                    be
+                    able to choose from a variety of wrapping papers, gift bags, and whether to include a card! Check
+                    the
+                    option during checkout for giftwrap. Please note, gift wrapping is only available when paying with
+                    card
+                    or Paypal.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="accordion-wrap">
+
+            <h3 class="accordion-btn row ai-cen jc-sb gap-2" id="accordion-title-4" aria-controls="accordion-content-4"
+                aria-expanded="false" type="button">
+                <button>What is your return policy?</button>
+                <i class="fa-light fa-plus"></i>
+            </h3>
+            <div class="accordion-content hide" id="accordion-content-4" aria-labelledby="accordion-title-4"
+                aria-hidden="true" role="region">
+
+                <p>If you are not satisfied with your purchase for any reason, you can return the product within 30 days
+                    of
+                    purchase. We
+                    will provide you with a return shipping label upon your return request. You can choose to exchange
+                    the
+                    product, return
+                    it for store credit, or get a refund to your original payment method.</p>
+                <p>Please note that returned products must be unworn, in the original packaging, and with the original
+                    tags
+                    still attached.
+                    If the returned items do not satisfy these requirements, your return will not be eligible for a
+                    refund
+                    or exchange.
+                </p>
+            </div>
+        </div>
+
+        <div class="accordion-wrap">
+            <h3 class="accordion-btn row ai-cen jc-sb gap-2" id="accordion-title-5" aria-controls="accordion-content-5"
+                aria-expanded="false" type="button">
+                <button>Do you have a store location?</button>
+                <i class="fa-light fa-plus"></i>
+            </h3>
+            <div class="accordion-content hide" id="accordion-content-5" aria-labelledby="accordion-title-5"
+                aria-hidden="true" role="region">
+                <p>We do not have a brick and morter location which allows us to cut down on overhead costs and provide
+                    pur
+                    fabulous products to you at the lowest possible price online! However we do have some stores we
+                    partner with , but cannot guarentee their price will be as low as ours! Use links in the footer to
+                    find a store close to you!</p>
+                <p>Please contact us for any questions or inquiries
+                    , or use our virtual assitant for quick and easy support!
+                </p>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Newsletter Modal triggered by Newsletter link in footer -->
+    <dialog id="newsletter-modal" class="modal newsletter-modal">
+        <div class="newsletter-component">
+            <button type="button" aria-label="close newsletter signup" btn-close>
+                <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                    <path
+                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                </svg>
+            </button>
+            <h3>Subscribe to our newsletter</h3>
+            <p>Stay in the loop with the latest festive trends and exclusive offers by subscribing to our newsletter</p>
+            <div class="newsletter-input-wrapper">
+                <label for="newsletter-email" class="sr-only">Enter your email address to subscribe to our
+                    newsletter</label>
+                <input type="email" name="email-address" id="newsletter-email" class="newsletter-input"
+                    placeholder="Enter your email">
+                <button class="newsletter-submit-btn" type="submit">Subscribe</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- dialog triggered by "proceed to checkout" button -->
+    <dialog class="payment-wrapper modal">
+        <button type="button" aria-label="close payment form" btn-close>
+            <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+        <form class="payment-form" id="payment-form">
+            <fieldset>
+                <h3>Contact info</h3>
+                <label for="email">Email<span class="required"><sup>*</sup></span></label>
+                <input type="email" name="email" id="email" placeholder="Enter email address">
+            </fieldset>
+
+            <fieldset>
+                <h3>Shipping info</h3>
+                <label for="name">Name<span class="required"><sup>*</sup></span></label>
+                <input type="text" name="name" id="name" placeholder="Enter name">
+
+                <label for="region">Country/Region<span class="required"><sup>*</sup></span></label>
+                <input type="text" name="region" id="region" placeholder="Enter region">
+
+                <label for="address">Address<span class="required"><sup>*</sup></span></label>
+                <input type="text" name="address" id="address" placeholder="Enter address">
+            </fieldset>
+
+
+            <fieldset class="payment-trigger">
+                <h3>Payment info</h3>
+                <div class="row ai-cen gap-1">
+                    <div class="payment-options">
+                        <input type="radio" name="pay-options" id="option-card" class="option-card option-btn" checked>
+                        <label for="option-card">Pay with card</label>
+                    </div>
+                    <div class="payment-options">
+                        <input type="radio" name="pay-options" id="option-cash" class="option-cash option-btn">
+                        <label for="option-cash">Pay with cash</label>
+                    </div>
+
+                    <div class="payment-options">
+                        <input type="radio" name="pay-options" id="option-paypal" class="option-paypal option-btn">
+                        <label for="option-paypal">Pay with Paypal</label>
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+
+            <fieldset class="pay-with-card">
+                <fieldset>
+                    <label for="card">Card Number<span class="required"><sup>*</sup></span></label>
+                    <input type="number" placeholder="4848 4822 2165 5487">
+                </fieldset>
+
+                <div class="row ai-cen gap-1">
+                    <fieldset>
+                        <label for="exp">Expiry Date<span class="required"><sup>*</sup></span></label>
+                        <input type="number" id="exp" name="exp" placeholder="02/27">
+                    </fieldset>
+                    <fieldset>
+                        <label for="cvc">CVC<span class="required"><sup>*</sup></span></label>
+                        <input type="number" id="cvc" name="cvc" placeholder="444">
+                    </fieldset>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="pay-with-cash">
+                <p>Please be ready with cash on delivery!</p>
+
+            </fieldset>
+
+            <fieldset class="pay-with-paypal">
+                <button class="payment-form-btn paypal-btn">Click here to process your order with Paypal</button>
+
+            </fieldset>
+
+
+
+            <button type="submit" class="payment-form-btn payment-form-submit-btn">Place Order</button>
+
+        </form>
+    </dialog>
+
+    <!-- Thank you for your purchase/feedback after checkout -->
+    <dialog id="purchase-complete" class="purchase-complete modal">
+        <div class="confetti"></div>
+        <div class="purchase-complete-start">
+            <button type="button" aria-label="close purchase complete modal" btn-close>
+                <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                    <path
+                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                </svg>
+            </button>
+            <img src="/Images/retro_santa.jpg" alt="" width="120px" style="clip-path: circle()">
+            <h2>Thank you for your purchase</h2>
+            <p>Your support means the world to us. As a small business, every order makes a big difference. We
+                appreciate you!</p>
+        </div>
+
+        <div class="purchase-complete-end row ai-cen jc-sb gap-2">
+            <p>Enjoyed your experience? Please take a moment to rate us. Your feedback ensures we continue delivering
+                exceptional service</p>
+            <button type="button" class="feedback-btn">Give feedback</button>
+
+        </div>
+    </dialog>
+
+    <!-- Feedback Modal -->
+    <dialog class="feedback-modal modal">
+        <button type="button" aria-label="close feedback popup" btn-close>
+            <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+        <div class="feedback">
+            <!-- <img class="santa-hat" src="https://icodethis.com/images/iCodeMas/santa_hat.png" alt=""> -->
+
+
+            <h2>We value your feedback!</h2>
+            <p>Your feedback is invaluable in shaping a better shopping experience for you and others. Thank you for
+                being a
+                part of our commitment to excellence!</p>
+
+            <div class="emoji-row row ai-st jc-cen gap-half">
+                <ul class="col ai-cen gap-quarter rating">
+                    <li class="emoji">😡</li>
+                    <li class="desat">Terrible</li>
+                </ul>
+
+                <ul class="col ai-cen gap-quarter rating">
+                    <li class="emoji">😟</li>
+                    <li class="desat">Bad</li>
+                </ul>
+
+                <ul class="col ai-cen gap-quarter rating">
+                    <li class="emoji">😑</li>
+                    <li class="desat">Okay</li>
+                </ul>
+
+                <ul class="col ai-cen gap-quarter rating">
+                    <li class="emoji">😊</li>
+                    <li class="desat">Good</li>
+                </ul>
+
+                <ul class="col ai-cen gap-quarter rating">
+                    <li class="emoji">🤩</li>
+                    <li class="desat">Amazing</li>
+                </ul>
+            </div>
+
+            <form>
+                <label for="message">Share your feedback</label>
+                <textarea name="message" placeholder="Message" id="message" rows="5"></textarea>
+                <button class="btn feedback-btn" type="submit">Send feedback</button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Gift card Modal -->
+    <dialog class="gift-card-modal">
+        <button type="button" aria-label="close gift card options" btn-close>
+            <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+            </svg>
+        </button>
+        <div class="gift-card">
+
+            <!-- <img class="xmas-gift" src="https://icodethis.com/images/iCodeMas/gift.png" alt=""> -->
+            <h2>Gift the joy of choice!</h2>
+            <p>Show them you care with a gift they'll love. With an online gift card, they can choose from a wide
+                selection of products</p>
+
+            <div class="row ai-cen jc-cen gap-half value-row">
+                <button class="increment minus-card grid pc-cen"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" name="amount" id="amount" value="" class="amount">
+                <button class="increment plus-card grid pc-cen"><i class="fa-solid fa-plus"></i></button>
+            </div>
+
+            <div class="grid ji-cen pc-cen card-amounts gap-half">
+                <button data-value="25">$25</button>
+                <button data-value="50">$50</button>
+                <button data-value="75">$75</button>
+                <button data-value="100">$100</button>
+                <button data-value="200">$200</button>
+                <button data-value="300">$300</button>
+
+            </div>
+
+            <button class="btn">Add to cart</button>
+        </div>
+    </dialog>
+
+    <!-- coupon modal -->
+    <dialog class="coupon-modal">
+        <div class="coupon">
+            <section class="img">
+
+            </section>
+
+            <section class="content">
+                <button type="button" aria-label="close coupon" btn-close>
+                    <svg class="close-glyph" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                        <path
+                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                    </svg>
+                </button>
+                <span class="sale">20%</span>
+                <h3>Jingle all the way to savings</h3>
+                <p>Enter your email for an exclusive holiday discount</p>
+                <label id="email-label" for="email" class="sr-only">Enter your email address</label>
+                <input type="email" aria-labelledby="email-label" name="email" id="email" placeholder="Email address">
+                <button class="btn coupon-btn" aria-label="Submit your email address" type="submit">Place order</button>
+                <button aria-label="Don't submit your email address" class="desat">No thanks</button>
+            </section>
+
+        </div>
+    </dialog>
+    <script src="index.js"></script>
+</body>
+
+</html>
