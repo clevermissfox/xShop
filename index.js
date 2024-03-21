@@ -1,4 +1,4 @@
-import OPENAI_API from "/apikey.js";
+import OPENAI_API from "apikey.js";
 
 const catalog = [
   {
@@ -897,7 +897,7 @@ function timestamp() {
 }
 
 function virtualAssistant(inputValue) {
-  const apiKey = GET /api/v1/accounts/edicodes/env/OPENAI_API;
+  const apiKey = OPENAI_API;
 
   const url = "https://api.openai.com/v1/completions";
 
