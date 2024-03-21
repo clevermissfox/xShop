@@ -832,7 +832,7 @@ chatInput.addEventListener("keypress", function (event) {
   }
 });
 
-//create/append/render chat bubbly
+//create/append/render chat bubblE
 function createRenderChatBubble(reply) {
   const chatResponse = document.createElement("div");
   chatResponse.classList.add("assistant-chat-item", "grid", "assistant-side");
@@ -895,8 +895,7 @@ function timestamp() {
 }
 
 function virtualAssistant(inputValue) {
-  //this is where you put your own api key! please dont be a grinch and please dont use my tokens! when you first sign up they give you a ton of tokens to play w for free!just trying to make a fun website for iCodeMas! dont wanna have to track your ip address and deliver coal for icodemas!
-  const apiKey = "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";
+  const apiKey = OPENAI_API;
 
   const url = "https://api.openai.com/v1/completions";
 
