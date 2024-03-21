@@ -1,4 +1,4 @@
-import OPENAI_API from "apikey.js";
+import OPENAI_API from "/apikey.js";
 
 const catalog = [
   {
