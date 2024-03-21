@@ -1,3 +1,5 @@
+import OPENAI_API from "/apikey.js";
+
 const catalog = [
   {
     name: "Travel Jewelry Case",
